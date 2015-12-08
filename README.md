@@ -27,6 +27,9 @@ to perform the createPayment request, in "TEST" mode.
 ## The next steps
 You can follow the on-file documentation in `payzen.soap-v5.createPayment.example.php` to change the properties of the payment you want to initiate, like the amount or the informations of the customer payment card.
 
+You can also change the `TEST` parameter to `PRODUCTION` to switch to _real_ payment mode, with *all* the caution this decision expects.
+
+
 ## Note
 * The documentation used to write this code was [Guide technique d’implémentation des Web services V5, v1.4](https://payzen.eu/wp-content/uploads/2015/09/Guide_technique_d_implementation_Webservice_V5_v1.4_Payzen.pdf) (FRENCH)
 
