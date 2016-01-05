@@ -1,9 +1,8 @@
- ##
- # PayZen SOAP V5 payment example
- #
- # @version 0.2
- # 
- ####
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+""" PayZen SOAP V5 Python2 payment example """
+
 from PayZenSOAPV5ToolBox import PayZenSOAPV5ToolBox
 import logging
 
@@ -37,25 +36,25 @@ payzenTB = PayZenSOAPV5ToolBox(shopId, certTest, certProd, mode, logger)
 
 # 'createPayent' request
 try:
-  result = payzenTB.createPayment(amount, currency, cardNumber, expiryMonth, expiryYear, cardSecurityCode, scheme, orderId)
-  logger.info("Payzen response code was: " + str(result.commonResponse.responseCode))
+    result = payzenTB.createPayment(amount, currency, cardNumber, expiryMonth, expiryYear, cardSecurityCode, scheme, orderId)
+    logger.info("Payzen response code was: " + str(result.commonResponse.responseCode))
 
-  # Use the result
-  if result.commonResponse.responseCode == 0:
-    ### Here is the code for an accepted payment
-    print 'Payment is done !'
-    logger.info('Payment of order {} is done !'.format(orderId))
-  else:
-    ### Here is the code for a not accepted payment
-    print "Payment is not authorised"
-    logger.error("Payment not authorised for order " + orderId)
-    print "PayZen responded with code " + str(result.commonResponse.responseCode)
-    if result.commonResponse.responseCodeDetail:
-      print "The additionnal given detail was: " + result.commonResponse.responseCodeDetail
-      logger.info("The additionnal given detail was: " + result.commonResponse.responseCodeDetail)
+    # Use the result
+    if result.commonResponse.responseCode == 0:
+        ### Here is the code for an accepted payment
+        print 'Payment is done !'
+        logger.info('Payment of order {} is done !'.format(orderId))
+    else:
+        ### Here is the code for a not accepted payment
+        print "Payment is not authorised"
+        logger.error("Payment not authorised for order " + orderId)
+        print "PayZen responded with code " + str(result.commonResponse.responseCode)
+        if result.commonResponse.responseCodeDetail:
+            print "The additionnal given detail was: " + result.commonResponse.responseCodeDetail
+            logger.info("The additionnal given detail was: " + result.commonResponse.responseCodeDetail)
 
 except Exception as e:
-  ### Here is the code for a error during process management
-  msg = 'Something was wrong during payment process - An exception raised: ' + str(e)
-  logger.error(msg)
-  print msg
+    ### Here is the code for a error during process management
+    msg = 'Something was wrong during payment process - An exception raised: ' + str(e)
+    logger.error(msg)
+    print msg
